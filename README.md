@@ -11,8 +11,9 @@ that does what a player does — master, every variant, wait one target duration
 again, download the newest segment, look at its first bytes — and reports the result as
 a table, as findings with a verdict, and as JSON. It **reads only**: GET on playlists and
 segments, a TCP handshake on RTMP; it never sends `connect`, `publish` or `play`. Query
-strings and userinfo are stripped from every URL it prints and request headers are
-never printed, because that is where tokens live.
+strings and userinfo are stripped from every URL it prints, an RTMP stream key (the
+last path element) is replaced by an ellipsis, and request headers are never printed,
+because that is where tokens live.
 
 ```
 $ hlsdoctor ls https://demo.unified-streaming.com/k8s/live/stable/scte35.isml/.m3u8

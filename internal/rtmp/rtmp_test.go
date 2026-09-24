@@ -66,7 +66,7 @@ func TestHandshakeOK(t *testing.T) {
 	if r.Error != "" || r.Stage != "done" || !r.Echo || r.ServerVersion != 3 || r.ServerTime != 4242 {
 		t.Fatalf("%+v", r)
 	}
-	if strings.Contains(r.URL, "secret") || strings.Contains(r.URL, "streamkey?token") {
+	if strings.Contains(r.URL, "secret") || strings.Contains(r.URL, "streamkey") || !strings.HasSuffix(r.URL, "/live/…?…") {
 		t.Errorf("URL not redacted: %s", r.URL)
 	}
 	if r.Connect <= 0 || r.Handshake < r.Connect {
