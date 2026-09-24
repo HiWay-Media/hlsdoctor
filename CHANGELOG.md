@@ -5,6 +5,14 @@ versions follow [SemVer](https://semver.org/). Items reference their `HLD-n` bac
 
 ## [Unreleased]
 
+### Changed
+- `fetch.Redact` hides the last path element of an `rtmp(s)://` URL — the stream key —
+  as well as the query string; found by the HLD-1 Questions phase (Q6).
+
+### Added
+- `thoughts/HLD-1-stream-doctor/00-questions.md`: the QRSPI Questions phase, ten
+  questions with proposed defaults, awaiting answers (HLD-1).
+
 ## [0.0.1] — 2026-09-24
 
 Not released: the first working binary, tested against local fakes and two public

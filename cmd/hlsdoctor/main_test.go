@@ -171,13 +171,13 @@ func TestLsAndRTMPAndFrom(t *testing.T) {
 	if code != 3 {
 		t.Errorf("an invalid target under --exit-on error is 3, got %d\n%s", code, text)
 	}
-	for _, want := range []string{"│ media", "1044", "handshake ok", "unsupported scheme ftp", "rtmp://" + addr + "/live/key?…"} {
+	for _, want := range []string{"│ media", "1044", "handshake ok", "unsupported scheme ftp", "rtmp://" + addr + "/live/…?…"} {
 		if !strings.Contains(text, want) {
 			t.Errorf("missing %q:\n%s", want, text)
 		}
 	}
-	if strings.Contains(text, "secret") {
-		t.Errorf("leak:\n%s", text)
+	if strings.Contains(text, "secret") || strings.Contains(text, "/live/key") {
+		t.Errorf("leak — the query or the stream key is in the output:\n%s", text)
 	}
 	out.Reset()
 	if code := run([]string{"check", "rtmp://" + addr + "/live"}, &out, io.Discard); code != 0 || !strings.Contains(out.String(), "rtmp-ok") {

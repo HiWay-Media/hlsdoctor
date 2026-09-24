@@ -42,8 +42,9 @@ BACKLOG.md / ROADMAP.md      single source of truth (HLD-n ids) / generated view
 1. **Read-only.** `GET` on playlists and segments; on RTMP the handshake and nothing
    after it — no `connect`, `publish` or `play`, so no stream key is ever needed.
 2. **Never print what could carry a token.** Every URL goes through `fetch.Redact`
-   (query string and userinfo stripped, path kept) before it is stored in a report or
-   a finding; transport errors are redacted too; request headers are never printed;
+   (query string and userinfo stripped, path kept; on `rtmp(s)://` the last path
+   element — the stream key — replaced by `…`) before it is stored in a report or a
+   finding; transport errors are redacted too; request headers are never printed;
    the JSON output has no field for them. A new field that holds a URL takes the
    redacted form.
 3. **A failing fetch is a finding, never a crash.** `hls.Probe` and `rtmp.Probe` return

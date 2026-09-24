@@ -139,7 +139,9 @@ func ResolveIPs(ctx context.Context, rawURL string) ([]string, error) {
 }
 
 // Redact strips the query string and any userinfo from a URL: tokens live there.
-// The path is kept, so a finding still names the stream.
+// The path is kept, so a finding still names the stream — except on rtmp(s)://, where
+// the last path element is the stream key (rtmp://host/app/<key>): it is replaced by
+// an ellipsis when the path has two or more elements, and the application is kept.
 func Redact(rawURL string) string {
 	u, err := url.Parse(rawURL)
 	if err != nil {
@@ -149,6 +151,13 @@ func Redact(rawURL string) string {
 		return rawURL
 	}
 	u.User = nil
+	if u.Scheme == "rtmp" || u.Scheme == "rtmps" {
+		parts := strings.Split(strings.Trim(u.Path, "/"), "/")
+		if len(parts) >= 2 && parts[len(parts)-1] != "" {
+			u.Path = "/" + strings.Join(parts[:len(parts)-1], "/") + "/…"
+			u.RawPath = ""
+		}
+	}
 	if u.RawQuery != "" || u.ForceQuery {
 		u.RawQuery = ""
 		u.ForceQuery = false
