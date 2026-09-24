@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" fill="currentColor">
+  <title>hlsdoctor</title>
+  <rect x="12" y="40" width="40" height="8" rx="2"/>
+  <rect x="12" y="28" width="28" height="8" rx="2" opacity=".8"/>
+  <rect x="12" y="16" width="16" height="8" rx="2" opacity=".65"/>
+  <polyline points="34,20 40,20 43,13 47,27 50,20 56,20" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

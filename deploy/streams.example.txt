@@ -1,0 +1,5 @@
+# One target per line: http(s) master or media playlists, rtmp(s) ingest endpoints.
+# Lines starting with # are ignored. Tokens in the query string are read, never printed.
+https://cdn.example.com/live/channel-1/master.m3u8
+https://cdn.example.com/live/channel-2/master.m3u8?token=…
+rtmp://origin.example.com/live
