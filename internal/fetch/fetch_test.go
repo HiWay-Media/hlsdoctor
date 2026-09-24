@@ -76,7 +76,10 @@ func TestRedact(t *testing.T) {
 		"https://cdn.example/live/master.m3u8":                      "https://cdn.example/live/master.m3u8",
 		"https://cdn.example/live/master.m3u8?token=abc&exp=1":      "https://cdn.example/live/master.m3u8?…",
 		"https://user:pass@cdn.example/live/master.m3u8":            "https://cdn.example/live/master.m3u8",
-		"rtmp://origin.example:1935/live/streamkey?auth=x":          "rtmp://origin.example:1935/live/streamkey?…",
+		"rtmp://origin.example:1935/live/streamkey?auth=x":          "rtmp://origin.example:1935/live/…?…",
+		"rtmp://origin.example/live":                                "rtmp://origin.example/live",
+		"rtmp://origin.example/live/":                               "rtmp://origin.example/live/",
+		"rtmps://origin.example/app/sub/sk_live_123":                "rtmps://origin.example/app/sub/…",
 		"https://cdn.example/live/720p/index.m3u8?wmsAuthSign=Zm9v": "https://cdn.example/live/720p/index.m3u8?…",
 	}
 	for in, want := range cases {

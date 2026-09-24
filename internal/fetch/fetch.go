@@ -158,12 +158,14 @@ func Redact(rawURL string) string {
 			u.RawPath = ""
 		}
 	}
+	q := ""
 	if u.RawQuery != "" || u.ForceQuery {
 		u.RawQuery = ""
 		u.ForceQuery = false
-		return u.String() + "?…"
+		q = "?…"
 	}
-	return u.String()
+	// url.String percent-encodes the ellipsis in a path; print it as the glyph.
+	return strings.Replace(u.String(), "%E2%80%A6", "…", 1) + q
 }
 
 // redactErr keeps a transport error from leaking the full URL with its query.
