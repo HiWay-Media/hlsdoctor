@@ -26,13 +26,16 @@ internal/findings/           Policy, Evaluate, EvaluateRTMP, Nodes, Worst, ExitC
 internal/render/             the table and the findings text
 internal/version/            Version, set by -ldflags at release
 testdata/                    master, live, VOD and low-latency playlists
-deploy/nomad/                the periodic batch job spec; deploy/streams.example.txt
+deploy/nomad/                the periodic batch job spec (raw_exec + release binary; -docker: the GHCR image);
+                             deploy/streams.example.txt
+Dockerfile                   the image: static binary on distroless static-debian13:nonroot; VERSION via build-arg
 scripts/check-repo.sh        the repo's invariants (VERSION ↔ CHANGELOG, README statements, the findings table); CI runs it
 scripts/backlog.mjs          lint · roadmap · check · issues — Node, tooling only (package.json is private)
 site/build.mjs               generates site/dist/index.html FROM README.md
 .github/workflows/           ci.yml (gofmt, vet, test, static builds, check-repo, backlog), release.yml (tag v*:
                              binaries + checksums + GitHub release + milestone), release-drift.yml (VERSION with
-                             no tag for 2 h), pages.yml, backlog-issues.yml
+                             no tag for 2 h), docker.yml (image: smoke on PR, :main, :<version> on tag),
+                             pages.yml, backlog-issues.yml
 VERSION                      the one version; CHANGELOG.md must have its section; the tag is v<VERSION>
 BACKLOG.md / ROADMAP.md      single source of truth (HLD-n ids) / generated view
 ```
@@ -98,6 +101,7 @@ gofmt -l cmd internal && go vet ./... && go test ./... -count=1
 CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o dist/hlsdoctor ./cmd/hlsdoctor
 go run ./cmd/hlsdoctor check https://demo.unified-streaming.com/k8s/live/stable/scte35.isml/.m3u8
 npm run backlog && npm run build:site
+docker build --build-arg VERSION=v0.0.0-test -t hlsdoctor:test . && docker run --rm hlsdoctor:test
 ```
 
 Against the farm: `hlsdoctor check --from streams.txt` on the real channels for a week,

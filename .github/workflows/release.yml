@@ -3,6 +3,7 @@ name: Release
 # On a tag v<version> matching VERSION: build static binaries for linux/amd64,
 # linux/arm64 and darwin/arm64, attach them with checksums to a GitHub release, close the milestone.
 # Re-run with `gh workflow run Release -f tag=v0.1.0`; every step is idempotent.
+# The container image for the same tag is built by docker.yml.
 
 on:
   push:

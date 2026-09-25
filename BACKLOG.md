@@ -66,6 +66,11 @@ until that tally exists.
 - [ ] **HLD-10 — Renditions and I-frame playlists**: probe EXT-X-MEDIA renditions that
   carry a URI (alternate audio, subtitles) the way variants are probed, so a dead
   audio track is a finding; count I-frame playlists. <!-- hld: prio=med size=S labels=probe -->
+- [x] **HLD-17 — The container image**: a Dockerfile (static binary on distroless,
+  nonroot, cross-compiled so multi-arch needs no emulation) and a workflow that
+  smoke-runs it on pull requests and pushes it to GHCR from main and from release
+  tags — so the week on the channels can run as a TeamCity step or a Nomad docker task
+  without fetching a binary. <!-- hld: prio=med size=S labels=release ver=main -->
 - [ ] **HLD-11 — Release 0.1.0**: VERSION, CHANGELOG, tag — after HLD-9.
   <!-- hld: prio=med size=S labels=release -->
 
