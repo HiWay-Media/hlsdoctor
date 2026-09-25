@@ -26,7 +26,8 @@ internal/findings/           Policy, Evaluate, EvaluateRTMP, Nodes, Worst, ExitC
 internal/render/             the table and the findings text
 internal/version/            Version, set by -ldflags at release
 testdata/                    master, live, VOD and low-latency playlists
-deploy/nomad/                the periodic batch job spec; deploy/streams.example.txt
+deploy/nomad/                the periodic batch job spec (raw_exec + release binary; -docker: the GHCR image);
+                             deploy/streams.example.txt
 Dockerfile                   the image: static binary on distroless static-debian13:nonroot; VERSION via build-arg
 scripts/check-repo.sh        the repo's invariants (VERSION ↔ CHANGELOG, README statements, the findings table); CI runs it
 scripts/backlog.mjs          lint · roadmap · check · issues — Node, tooling only (package.json is private)

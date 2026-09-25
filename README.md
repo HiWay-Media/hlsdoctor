@@ -103,7 +103,9 @@ hlsdoctor ls rtmp://origin.example.com/live
 
 **On a schedule**, as a periodic Nomad batch job whose exit code is the alarm:
 [`deploy/nomad/hlsdoctor.nomad.hcl`](deploy/nomad/hlsdoctor.nomad.hcl) probes the
-streams in its template every five minutes with `--exit-on bad`. The same command fits
+streams in its template every five minutes with `--exit-on bad`;
+[`deploy/nomad/hlsdoctor-docker.nomad.hcl`](deploy/nomad/hlsdoctor-docker.nomad.hcl) is the
+same job on the docker driver with the GHCR image. The same command fits
 a TeamCity build step or a cron line; `--json` feeds anything that reads JSON.
 
 **Flags:** `--timeout 10s` per request; `--wait` between the two fetches of a live
