@@ -4,13 +4,13 @@
 
 > This page is **generated** from [BACKLOG.md](BACKLOG.md), the single source of truth for planned work. Regenerate it with `node scripts/backlog.mjs roadmap` after editing the backlog — CI fails when the two disagree.
 
-**16 items · 7 shipped · 9 open · 2 milestones.**
+**17 items · 8 shipped · 9 open · 2 milestones.**
 
 ## At a glance
 
 | Milestone | Phase | Progress | Open | Shipped |
 |---|---|---|---|---|
-| **v0.1.0 — A week on the farm's channels** | now | `######....` 64% | 4 | 7 |
+| **v0.1.0 — A week on the farm's channels** | now | `#######...` 67% | 4 | 8 |
 | **v0.2.0 — Deeper, and on a dashboard** | next | `..........` 0% | 5 | 0 |
 
 ## v0.1.0 — A week on the farm's channels
@@ -25,6 +25,7 @@
 - [x] **HLD-8** — Repo operating model · med · M · project, release · `main`
 - [ ] **HLD-9** — A week on the channels · high · M · benchmark
 - [ ] **HLD-10** — Renditions and I-frame playlists · med · S · probe
+- [x] **HLD-17** — The container image · med · S · release · `main`
 - [ ] **HLD-11** — Release 0.1.0 · med · S · release
 
 ## v0.2.0 — Deeper, and on a dashboard

@@ -1,0 +1,5 @@
+# The build context is go.mod, cmd/ and internal/; everything else stays out.
+*
+!go.mod
+!cmd/
+!internal/

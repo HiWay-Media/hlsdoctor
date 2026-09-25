@@ -10,6 +10,10 @@ versions follow [SemVer](https://semver.org/). Items reference their `HLD-n` bac
   as well as the query string; found by the HLD-1 Questions phase (Q6).
 
 ### Added
+- The container image, `ghcr.io/hiway-media/hlsdoctor`: the static binary on distroless
+  `static-debian13:nonroot`, linux/amd64 and linux/arm64, built by a new `Docker`
+  workflow — smoke-run on every pull request, `:main` on every push to main,
+  `:<version>`, `:<major.minor>` and `:latest` on a release tag, with provenance and an SBOM (HLD-17).
 - `thoughts/HLD-1-stream-doctor/00-questions.md`: the QRSPI Questions phase, ten
   questions with proposed defaults, awaiting answers (HLD-1).
 

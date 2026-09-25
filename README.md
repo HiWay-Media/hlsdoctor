@@ -133,6 +133,16 @@ Static binaries for linux/amd64, linux/arm64 and darwin/arm64 on the
 From source: `go install github.com/hiway-media/hlsdoctor/cmd/hlsdoctor@latest` (Go 1.27).
 No dependencies beyond the standard library.
 
+As a container, for linux/amd64 and linux/arm64 — distroless, nonroot, about 9 MB:
+
+```bash
+docker run --rm ghcr.io/hiway-media/hlsdoctor:latest check https://cdn.example.com/live/master.m3u8
+docker run --rm -v "$PWD/streams.txt:/streams.txt:ro" ghcr.io/hiway-media/hlsdoctor:latest check --from /streams.txt --json --exit-on bad
+```
+
+`:<version>` and `:<major.minor>` follow the release tags; `:main` follows the main branch,
+for trying a change on the channels before it is released.
+
 ## Prior art
 
 - [hlsprobe](https://github.com/grafov/hlsprobe) and [m3u8](https://github.com/grafov/m3u8):
