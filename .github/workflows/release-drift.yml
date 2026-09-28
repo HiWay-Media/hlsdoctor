@@ -7,6 +7,10 @@ name: Release drift
 # that set the version is older than the grace a release PR needs between merging
 # and tagging. It runs on push so a bump is checked, and daily so a quiet repo still
 # hears about a tag nobody pushed — a failing scheduled run emails the owner.
+#
+# A version whose CHANGELOG section opens with "Not released" is one that was never meant
+# to be tagged (0.0.1: the first binary, before the week on the channels); it passes
+# with a notice. The marker goes when the section becomes a release.
 
 on:
   push:
@@ -36,6 +40,13 @@ jobs:
             echo "$TAG exists — nothing to report"
             exit 0
           fi
+          # The CHANGELOG says this version is deliberately untagged.
+          FIRST="$(awk -v v="$VERSION" 'index($0, "## [" v "]") == 1 {f=1; next} f && NF {print; exit}' CHANGELOG.md)"
+          case "$FIRST" in
+            "Not released"*)
+              echo "::notice::$VERSION has no $TAG and CHANGELOG.md says it is not released — nothing to report"
+              exit 0 ;;
+          esac
           # The commit that last touched the version line, and how long ago.
           SET_AT="$(git log -1 --format=%ct -- VERSION)"
           AGE=$(( $(date +%s) - SET_AT ))

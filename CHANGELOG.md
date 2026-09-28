@@ -6,6 +6,9 @@ versions follow [SemVer](https://semver.org/). Items reference their `HLD-n` bac
 ## [Unreleased]
 
 ### Changed
+- The release-drift check passes a version whose CHANGELOG section opens with
+  "Not released", so an untagged 0.0.1 is no longer a daily failure; any other
+  untagged version still fails after two hours.
 - `fetch.Redact` hides the last path element of an `rtmp(s)://` URL — the stream key —
   as well as the query string; found by the HLD-1 Questions phase (Q6).
 
