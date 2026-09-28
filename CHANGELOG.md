@@ -14,7 +14,8 @@ versions follow [SemVer](https://semver.org/). Items reference their `HLD-n` bac
   `static-debian13:nonroot`, linux/amd64 and linux/arm64, built by a new `Docker`
   workflow — smoke-run on every pull request, `:main` on every push to main,
   `:<version>`, `:<major.minor>` and `:latest` on a release tag, with provenance and an SBOM; `deploy/nomad/hlsdoctor-docker.nomad.hcl`, the periodic
-  job on the docker driver with that image (HLD-17).
+  job on the docker driver with that image, pinned by digest to the `:main` build of
+  1d19443 for the week on the channels (HLD-17, HLD-9).
 - `thoughts/HLD-1-stream-doctor/00-questions.md`: the QRSPI Questions phase, ten
   questions with proposed defaults, awaiting answers (HLD-1).
 
