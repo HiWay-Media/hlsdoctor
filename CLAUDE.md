@@ -34,7 +34,7 @@ scripts/backlog.mjs          lint · roadmap · check · issues — Node, toolin
 site/build.mjs               generates site/dist/index.html FROM README.md
 .github/workflows/           ci.yml (gofmt, vet, test, static builds, check-repo, backlog), release.yml (tag v*:
                              binaries + checksums + GitHub release + milestone), release-drift.yml (VERSION with
-                             no tag for 2 h), docker.yml (image: smoke on PR, :main, :<version> on tag),
+                             no tag for 2 h, unless its CHANGELOG section opens "Not released"), docker.yml (image: smoke on PR, :main, :<version> on tag),
                              pages.yml, backlog-issues.yml
 VERSION                      the one version; CHANGELOG.md must have its section; the tag is v<VERSION>
 BACKLOG.md / ROADMAP.md      single source of truth (HLD-n ids) / generated view
